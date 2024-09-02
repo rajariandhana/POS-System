@@ -2,7 +2,7 @@
 x-data="{accOpt:false}" >
     <ul class="flex gap-x-8 w-full">
         {{-- <li><a href="">Home</a></li> --}}
-        <li><a href="">New Order</a></li>
+        <li><a href="{{route('neworder')}}">New Order</a></li>
         <li><a href="">History</a></li>
         <li class="ml-auto flex justify-end">
             <button @click="accOpt=!accOpt" @click.oustide="accOpt=false">
