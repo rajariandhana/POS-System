@@ -2,7 +2,7 @@
 x-data="{accOpt:false}" >
     <ul class="flex gap-x-8 w-full">
         {{-- <li><a href="">Home</a></li> --}}
-        <li><a href="">New Order</a></li>
+        <li><a href="{{route('neworder')}}">New Order</a></li>
         <li><a href="">History</a></li>
         @cannot('admin-access')
             <li><a href="">Edit Menu</a></li> 
