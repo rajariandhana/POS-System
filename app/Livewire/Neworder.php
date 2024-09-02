@@ -68,12 +68,29 @@ class NewOrder extends Component
         $this->status=NULL;
     }
     public function Confirmed(Request $request){
-        $request->session()->flash('success', 'ORDER CREATED');
-        // $request->session()->flash('failure', 'SOMETHING WENT WRONG');
+        //
+        $orderData = $this->GenerateOrderData();
+        $productData = $this->GenerateProductData();
+        $oc = new OrderController;
+        $res = $oc->CreateOrder($orderData,$productData);
+        if($res=="SUCCESS"){
+            $request->session()->flash('SUCCESS', 'ORDER CREATED');
+        }
+        else{
+            $request->session()->flash('FAILURE', 'SOMETHING WENT WRONG');
+        }
         return redirect()->route('neworder'); 
     }
     public function ExitStatus(Request $request){
         $request->session()->forget('success');
         $request->session()->forget('failure');
+    }
+
+
+    private function GenerateOrderData(){
+
+    }
+    private function GenerateProductData(){
+
     }
 }
