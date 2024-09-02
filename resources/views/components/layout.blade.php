@@ -25,7 +25,7 @@ lang="en"
 <body class="bg-gray-100 text-gray-800 font-poppins">
     <x-navbar></x-navbar>
     <main>
-        <div class="flex flex-col justify-center pt-10 mb-10
+        <div class="flex flex-col justify-center my-10
          {{-- bg-red-200 md:bg-green-200 lg:bg-blue-200 --}}
          ">
             {{ $slot }}

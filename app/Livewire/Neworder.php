@@ -4,16 +4,20 @@ namespace App\Livewire;
 
 use App\Models\Product;
 use Livewire\Component;
+use Illuminate\Http\Request;
 
-class Neworder extends Component
+class NewOrder extends Component
 {
     public $categories;
     public $items;
     public $subtotal;
+    public $status;
     public function mount($categories){
         $this->categories=$categories;
         $this->items=[];
         $this->subtotal=0;
+        $this->status=NULL;
+        // $this->status='PAYMENT';
     }
     public function render()
     {
@@ -55,5 +59,21 @@ class Neworder extends Component
     public function EmptyCart(){
         $this->subtotal=0;
         $this->items = [];
+    }
+    public function Next(){
+        if($this->subtotal<=0) return;
+        $this->status='PAYMENT';
+    }
+    public function Cancel(){
+        $this->status=NULL;
+    }
+    public function Confirmed(Request $request){
+        $request->session()->flash('success', 'ORDER CREATED');
+        // $request->session()->flash('failure', 'SOMETHING WENT WRONG');
+        return redirect()->route('neworder'); 
+    }
+    public function ExitStatus(Request $request){
+        $request->session()->forget('success');
+        $request->session()->forget('failure');
     }
 }
