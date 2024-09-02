@@ -1,4 +1,5 @@
 <x-layout title="New Order">
+<<<<<<< Updated upstream
     <div class="flex w-full  h-screen">
         <div class="grid grid-cols-2 w-2/3 p-2 gap-2">
             <div class="w-full bg-white rounded-xl shadow-md"></div>
@@ -36,4 +37,7 @@
             </div>
         </div>
     </div>
+=======
+    @livewire('new-order',['categories'=>$categories])
+>>>>>>> Stashed changes
 </x-layout>
