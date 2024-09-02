@@ -1,4 +1,4 @@
-<nav class="top-0 fixed font-montserrat bg-gray-800 text-white w-full flex px-8 py-4 text-xl shadow-md"
+<nav class="top-0 fixed font-montserrat bg-gray-800 text-white w-full flex px-8 h-16 text-xl shadow-md items-center z-10"
 x-data="{accOpt:false}" >
     <ul class="flex gap-x-8 w-full">
         {{-- <li><a href="">Home</a></li> --}}
