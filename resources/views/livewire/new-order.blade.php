@@ -1,46 +1,8 @@
 <div class="flex w-full h-fit ">
     <div class="fixed top-0 right-0 z-0 flex justify-center items-center w-1/3 h-full bg-gray-900">
-
-
+        {{-- THIS IS FOR THE GRAY DARK BG AT THE RIGHT SIDE --}}
     </div>
-    {{-- @if (0) --}}
-    {{-- <div class="flex flex-col w-1/2 h-full bg-red-200 justify-between">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        Menu
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Qty
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Price * Qty
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($items as $item)
-                <tr class="bg-white border-b">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{$item['name']}}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{$item['qty']}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$item['price']}}
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <button wire:click="Cancel" class="py-2 bg-gray-800 text-white rounded-md text-center w-full">CANCEL</button>
 
-    </div>
-    <div class="flex flex-col w-1/2 h-full bg-blue-200">
-    </div> --}}
-    {{-- @else --}}
     @if (session('success')||session('failure'))
         <div class="fixed top-0 right-0 left-0 z-20 flex justify-center items-center w-full h-full">
             <div class="fixed top-0 right-0 left-0 z-20 flex justify-center items-center w-full h-full bg-black opacity-60"></div>
