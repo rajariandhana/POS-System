@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 use Illuminate\Http\Request;
+use App\Http\Controllers\OrderController;
 
 class NewOrder extends Component
 {
@@ -88,9 +89,36 @@ class NewOrder extends Component
 
 
     private function GenerateOrderData(){
-
+        $this->UpdateSubtotal();
+        $orderData = [
+            'cost'=>$this->subtotal
+            // 'employee_id'=>
+        ];
+        return $orderData;
     }
     private function GenerateProductData(){
-
+        $productData = [];
+        foreach($this->items as $item){
+            $product = Product::find($item['id']);
+            $productData[]=[
+                'product_id'=>$product->id,
+                'qty'=>(int)$item['qty'],
+                'price'=>$product->price,
+            ];
+        }
+        return $productData;
     }
 }
+/*
+1. A B C E
+2. 
+a 0 (isolated)
+b 3
+c 5
+d 3
+e 3
+f 4
+g 1
+3. 
+4. yes, idk
+*/

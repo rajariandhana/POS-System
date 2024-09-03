@@ -23,7 +23,7 @@
     <div class="flex flex-col items-center justify-start w-2/3 gap-8 py-2 h-fit">
         @if ($status=='PAYMENT')
         {{-- <div class="w-96"> --}}
-            <img class="w-96 h-[500px] object-cover my-8 bg-gray-800 rounded-xl" src="{{asset('QR_GOPAY.PNG')}}" alt="">
+            <img class="w-96 h-[500px] object-cover mt-12 bg-gray-800 rounded-xl" src="{{asset('QR_GOPAY.PNG')}}" alt="">
             <span class="py-4 text-xl text-center text-white bg-gray-800 w-96 rounded-xl">
                 Total Pembayaran: Rp {{$subtotal}}.000
             </span>

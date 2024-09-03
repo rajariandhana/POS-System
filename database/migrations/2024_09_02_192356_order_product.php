@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignUuid('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->integer('qty')->unsigned();
-            $table->integer('productPrice')->unsigned();
+            $table->integer('price')->unsigned();
         });
     }
 

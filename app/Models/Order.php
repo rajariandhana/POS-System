@@ -13,7 +13,7 @@ class Order extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     protected $fillable = [
-        'id','cost','employee_id'
+        'id','cost','user_id'
     ];
     protected static function boot()
     {
@@ -28,7 +28,7 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'order_product', 'order_id', 'product_id')
-                    ->withPivot('quantity', 'price')
+                    ->withPivot('qty', 'price')
                     ->withTimestamps();
     }
 }
