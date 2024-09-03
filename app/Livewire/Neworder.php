@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 use Illuminate\Http\Request;
+use App\Http\Controllers\OrderController;
 
 class NewOrder extends Component
 {
@@ -68,12 +69,56 @@ class NewOrder extends Component
         $this->status=NULL;
     }
     public function Confirmed(Request $request){
-        $request->session()->flash('success', 'ORDER CREATED');
-        // $request->session()->flash('failure', 'SOMETHING WENT WRONG');
+        //
+        $orderData = $this->GenerateOrderData();
+        $productData = $this->GenerateProductData();
+        $oc = new OrderController;
+        $res = $oc->CreateOrder($orderData,$productData);
+        if($res=="SUCCESS"){
+            $request->session()->flash('SUCCESS', 'ORDER CREATED');
+        }
+        else{
+            $request->session()->flash('FAILURE', 'SOMETHING WENT WRONG');
+        }
         return redirect()->route('neworder'); 
     }
     public function ExitStatus(Request $request){
         $request->session()->forget('success');
         $request->session()->forget('failure');
     }
+
+
+    private function GenerateOrderData(){
+        $this->UpdateSubtotal();
+        $orderData = [
+            'cost'=>$this->subtotal
+            // 'employee_id'=>
+        ];
+        return $orderData;
+    }
+    private function GenerateProductData(){
+        $productData = [];
+        foreach($this->items as $item){
+            $product = Product::find($item['id']);
+            $productData[]=[
+                'product_id'=>$product->id,
+                'qty'=>(int)$item['qty'],
+                'price'=>$product->price,
+            ];
+        }
+        return $productData;
+    }
 }
+/*
+1. A B C E
+2. 
+a 0 (isolated)
+b 3
+c 5
+d 3
+e 3
+f 4
+g 1
+3. 
+4. yes, idk
+*/

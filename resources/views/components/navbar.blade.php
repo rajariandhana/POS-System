@@ -1,20 +1,20 @@
-<nav class="top-0 fixed font-montserrat bg-gray-800 text-white w-full flex px-8 h-16 text-xl shadow-md items-center z-10"
+<nav class="fixed top-0 z-10 flex items-center w-full h-16 px-8 text-xl text-white bg-gray-800 shadow-md font-montserrat"
 x-data="{accOpt:false}" >
-    <ul class="flex gap-x-8 w-full">
+    <ul class="flex w-full gap-x-8">
         {{-- <li><a href="">Home</a></li> --}}
         <li><a href="{{route('neworder')}}">New Order</a></li>
-        <li><a href="">History</a></li>
+        <li><a href="{{route('orders')}}">History</a></li>
         @cannot('admin-access')
             <li><a href="">Edit Menu</a></li> 
             <li><a href="">Manage Employee</a></li> 
         @endcan
-        <li class="ml-auto flex justify-center">
+        <li class="flex justify-center ml-auto">
             <button @click="accOpt=!accOpt" @click.oustide="accOpt=false">
                 Account
             </button>
-            <div x-show="accOpt" class="fixed mt-8 bg-gray-100 text-zinc-500 text-md text-center justify-center px-2 py-2 rounded-lg flex-col gap-y-2 flex shadow-md font-sans">
-                <a href="" class="w-24 py-1 rounded-lg bg-yellow-500 text-white">Edit</a>
-                <a href="" class="w-24 py-1 rounded-lg bg-red-500 text-white">Logout</a>
+            <div x-show="accOpt" class="fixed flex flex-col justify-center px-2 py-2 mt-8 font-sans text-center bg-gray-100 rounded-lg shadow-md text-zinc-500 text-md gap-y-2">
+                <a href="" class="w-24 py-1 text-white bg-yellow-500 rounded-lg">Edit</a>
+                <a href="" class="w-24 py-1 text-white bg-red-500 rounded-lg">Logout</a>
             </div>
         </li>
         
