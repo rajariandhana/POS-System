@@ -12,10 +12,5 @@ Route::get('/', function () {
     ]);
 })->name('neworder');
 
-Route::get('/orders', function () {
-    // dd(Category::get());
-    return view('orders',[
-        'orders'=>Order::get()
-    ]);
-})->name('orders');
+Route::get('/orders', [OrderController::class, 'index'])->name('history');
 Route::get('orders/{order_id}', [OrderController::class, 'showOrderProducts'])->name('admin.order-product');

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function index(){
+        return view('orders',[
+            'orders'=>Order::get()
+        ]);
+    }
     public function CreateOrder($orderData, $productData){
         $order = new Order($orderData);
         $order->id = (string)Str::uuid();
