@@ -15,12 +15,13 @@
                 @foreach ($orders as $order)
                     <tr class="text-center border-b odd:bg-white even:bg-gray-50">
                         <th scope="row" class="px-6 py-4 font-medium text-left text-gray-800 whitespace-nowrap">
-                            {{ $order->id }}</td>
+                            {{ $order->id }}</th>
                         <td class="px-6 py-4">{{ $order->cost }}</td>
                         <td class="px-6 py-4">John Doe</td>
                         <td class="px-6 py-4">{{ $order->created_at->format('Y-m-d') }}</td>
                         <td class="px-6 py-4">{{ $order->created_at->format('H:i:s') }}</td>
-                        <td class="px-6 py-4"><a class="px-4 py-2 text-white bg-indigo-500 rounded-lg" href="/orders/{{ $order->id }}">View</a>
+                        <td class="px-6 py-4">
+                            <a class="px-4 py-2 text-white bg-indigo-500 rounded-lg" href="/orders/{{ $order->id }}">View</a>
                         </td>
                     </tr>
                 @endforeach

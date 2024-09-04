@@ -5,7 +5,7 @@ x-data="{accOpt:false}" >
         <li><a href="{{route('neworder')}}">New Order</a></li>
         <li><a href="{{route('history')}}">History</a></li>
         @cannot('admin-access')
-            <li><a href="">Edit Menu</a></li> 
+            <li><a href="{{route('menus')}}">Edit Menu</a></li> 
             <li><a href="">Manage Employee</a></li> 
         @endcan
         <li class="flex justify-center ml-auto">
