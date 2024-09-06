@@ -4,13 +4,13 @@
             <div class="fixed top-0 left-0 right-0 z-20 flex items-center justify-center w-full h-full bg-black opacity-60">
             </div>
             <div class="fixed bg-gray-100 z-20 w-[400px] justify-center flex flex-col rounded-xl mb-4 p-6">
-                {{-- <button wire:click=PanelExit() class="absolute top-2 right-2">
+                <button wire:click=PanelExit() class="absolute top-2 right-2">
                     <svg class="size-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18 17.94 6M18 18 6.06 6" />
                     </svg>
-                </button> --}}
+                </button>
 
                 @if ($editPanel == 'category')
                     <form class=" justify-left" wire:submit.prevent='EditCategory'>
