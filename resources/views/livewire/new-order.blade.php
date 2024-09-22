@@ -1,4 +1,4 @@
-<div class="flex w-full h-fit ">
+<div class="flex w-full h-screen overflow-hidden">
     <div class="fixed top-0 right-0 z-0 flex items-center justify-center w-1/3 h-full bg-gray-900">
         {{-- THIS IS FOR THE GRAY DARK BG AT THE RIGHT SIDE --}}
     </div>
@@ -20,7 +20,7 @@
 
         </div>
     @endif
-    <div class="flex flex-col items-center justify-start w-2/3 gap-8 py-2 h-fit">
+    <div class="flex flex-col items-center w-2/3 h-full gap-8 py-2 pb-24 overflow-y-auto">
         @if ($status=='PAYMENT')
         {{-- <div class="w-96"> --}}
             <img class="w-96 h-[500px] object-cover mt-12 bg-gray-800 rounded-xl" src="{{asset('QR_GOPAY.PNG')}}" alt="">
@@ -46,7 +46,7 @@
 
     </div>
 
-    <div class="z-0 flex flex-col w-1/3 h-full p-2">
+    <div class="z-0 w-1/3 h-full p-2 overflow-y-auto pb-28">
         <div class="flex flex-col pb-12 gap-y-2">
             <span class="text-xl text-center text-white">Order Summary</span>
             @foreach ($items as $item)
@@ -69,7 +69,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="fixed bottom-0 right-0 flex items-center justify-between w-1/3 gap-4 px-4 py-4 text-white bg-gray-800">
+        <div class="fixed bottom-0 right-0 flex items-center justify-between w-1/3 h-20 gap-4 px-4 py-4 text-white bg-gray-800">
             @if ($status=='PAYMENT')
             <button wire:click="Cancel()"  class="w-1/3 px-2 py-4 rounded-lg bg-rose-500">Cancel</button>
             <button wire:click="Confirmed()" class="w-2/3 px-2 py-4 bg-indigo-500 rounded-lg">Payment Confirmed</button>

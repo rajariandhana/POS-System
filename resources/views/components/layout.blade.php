@@ -22,7 +22,7 @@ lang="en"
 
 {{-- <body class="h-full bg-red-100 bg-gray-50 md:bg-green-100 lg:bg-blue-100"> --}}
 
-<body class="bg-gray-100 text-gray-800 font-poppins">
+<body class="text-gray-800 bg-gray-100  font-poppins {{request()->is('/') ? 'overflow-hidden':''}}">
     <x-navbar></x-navbar>
     <main>
         <div class="flex flex-col justify-center my-10
