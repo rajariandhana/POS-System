@@ -46,20 +46,21 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($order->products as $item)
-                    {{-- @dump($item) --}}
+                {{-- @dd($order->products) --}}
+                @foreach ($order->orderProducts as $product)
+                    {{-- @dump($product) --}}
                     <tr class="border-b odd:bg-white even:bg-gray-50">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-800 whitespace-nowrap">
-                            {{ $item->name }}
+                            {{ $product->name }}
                         </th>
                         <td class="px-6 py-4 text-center">
-                            {{ $item->pivot->qty }}
+                            {{ $product->qty }}
                         </td>
                         <td class="px-6 py-4 text-center">
-                            {{ $item->pivot->price }}
+                            {{ $product->price }}
                         </td>
                         <td class="px-6 py-4 text-center">
-                            {{ $item->pivot->qty * $item->pivot->price }}
+                            {{ $product->qty * $product->price }}
                         </td>
                     </tr>
                 @endforeach

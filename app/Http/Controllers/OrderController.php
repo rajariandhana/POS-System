@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -18,16 +19,22 @@ class OrderController extends Controller
         $order->save();
 
         foreach($productData as $data){
-            $order->products()->attach($data['product_id'],[
-                'price'=>$data['price'],
-                'qty'=>$data['qty'],
+            $product = Product::findOrFail($data['product_id']);
+            $order->orderProducts()->create([
+                // 'order_id' => $order->id,
+                'product_id'=>$product->id,
+                'name'     => $product->name,
+                'price'    => $product->price,
+                'qty'      => $data['qty']
+                // 'created_at' => now(),
+                // 'updated_at' => now(),
             ]);
         }
         return "SUCCESS";
     }
     public function showOrderProducts($order_id)
     {
-        $order = Order::with('products')->findOrFail($order_id);
+        $order = Order::with('orderProducts')->findOrFail($order_id);
         // dd($order);
         return view('order-products', compact('order'));
     }
