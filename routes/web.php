@@ -4,7 +4,9 @@ use App\Models\Order;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RegisteredUserController;
 
 Route::get('/', function () {
     // dd(Category::get());
@@ -23,3 +25,10 @@ Route::get('/menus', function () {
         'categories'=>Category::get()
     ]);
 })->name('menus');
+
+
+Route::get('/register',[RegisteredUserController::class,'create']);
+Route::post('/register',[RegisteredUserController::class,'store']);
+
+Route::get('/login',[SessionController::class,'create']);
+Route::post('/login',[SessionController::class,'store']);
