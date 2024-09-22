@@ -18,7 +18,7 @@
                             <label class="block mb-1 ml-2 text-sm font-medium ">Category name</label>
                             <input type="text" wire:model='category_name' name="category_name"
                                 class="block w-full p-2 text-sm border border-gray-300 rounded-lg bg-gray-50"
-                                placeholder="placeholder category" />
+                                value="{{$category_name}}" />
                             @error('category_name')
                                 <span class="text-xs text-red-500">
                                     {{ $message }}
@@ -26,9 +26,9 @@
                             @enderror
                         </div>
                         <button type="button" wire:click="DeleteCategory"
-                            class="px-4 py-2 text-sm text-center text-white rounded-lg bg-rose-500">Delete</button>
+                            class="px-4 py-2 text-sm text-center text-white rounded-lg bg-rose-500">Delete Category</button>
                         <button type="submit"
-                            class="px-4 py-2 text-sm text-center text-white bg-indigo-500 rounded-lg">Save</button>
+                            class="px-4 py-2 text-sm text-center text-white bg-indigo-500 rounded-lg">Save Name</button>
                     </form>
                 @elseif ($editPanel == 'menu')
                     <form class=" justify-left" wire:submit.prevent='EditMenu'>
@@ -36,7 +36,7 @@
                             <label class="block mb-1 ml-2 text-sm font-medium ">Name</label>
                             <input type="text" wire:model='product_name'
                                 class="block w-full p-2 text-sm border border-gray-300 rounded-lg bg-gray-50"
-                                placeholder="placeholder menu"/>
+                                value="{{$product_name}}"/>
                             @error('product_name')
                                 <span class="text-xs text-red-500">
                                     {{ $message }}
@@ -47,7 +47,7 @@
                             <label class="block mb-1 ml-2 text-sm font-medium ">Price</label>
                             <input type="text" wire:model='product_price'
                                 class="block w-full p-2 text-sm border border-gray-300 rounded-lg bg-gray-50"
-                                placeholder="placeholder price"/>
+                                value="{{$product_price}}"/>
                             @error('product_price')
                                 <span class="text-xs text-red-500">
                                     {{ $message }}
@@ -55,7 +55,7 @@
                             @enderror
                         </div>
                         <button type="button" wire:click="DeleteMenu"
-                            class="px-4 py-2 text-sm text-center text-white rounded-lg bg-rose-500">Delete</button>
+                            class="px-4 py-2 text-sm text-center text-white rounded-lg bg-rose-500">Delete Menu</button>
                         <button type="submit"
                             class="px-4 py-2 text-sm text-center text-white bg-indigo-500 rounded-lg">Save</button>
                     </form>
@@ -63,14 +63,14 @@
             </div>
         </div>
     @endisset
-    @foreach ($categories as $category)
-        <table class="w-2/3 p-2 text-sm text-left shadow-md text-zinc-500 rtl:text-right">
-            <thead class="text-gray-800 bg-gray-50">
+    <table class="w-2/3 p-2 text-sm text-left shadow-md text-zinc-500 rtl:text-right">
+        @foreach ($categories as $category)
+            <thead class="text-gray-800 bg-gray-300">
                 <tr class="text-center">
                     <th scope="col" class="flex items-center px-6 py-2 text-left gap-x-2">{{ $category->name }}
                         <button wire:click="PanelCategory('{{ $category->id }}')"
                             class="px-4 py-2 font-normal text-white bg-indigo-500 rounded-lg"
-                            href="/orders/{{ $category->id }}">Edit</button>
+                            href="/orders/{{ $category->id }}">Edit Category</button>
                     </th>
                     <th scope="col" class="px-6 py-2">Price</th>
                     <th scope="col" class="px-6 py-2"></th>
@@ -90,6 +90,6 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
-    @endforeach
+        @endforeach
+    </table>
 </div>
