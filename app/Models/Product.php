@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Order;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,4 +22,10 @@ class Product extends Model
     public function category_id(): BelongsTo{
         return $this->belongsTo(Category::class);
     }
+    public function orders(){
+        return $this->belongsToMany(Order::class)
+                    ->withPivot('name', 'price', 'qty')
+                    ->withTimestamps();
+    }
+
 }
