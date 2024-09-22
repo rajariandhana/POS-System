@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignUuid('order_id')->references('id')->on('orders')->onDelete('restrict');
-            $table->foreignId('product_id')->references('id')->on('products')->onDelete('restrict');
+            $table->foreignId('product_id')->nullable();;
+            // $table->string('product_name');
             $table->integer('qty')->unsigned();
             $table->integer('price')->unsigned();
         });

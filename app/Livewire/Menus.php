@@ -35,10 +35,15 @@ class Menus extends Component
     public function PanelCategory($id){
         $this->id=$id;
         $this->editPanel='category';
+        $this->category_name = Category::find($this->id)->name;
     }
     public function PanelMenu($id){
         $this->id=$id;
         $this->editPanel='menu';
+        $this->product_name = Product::find($this->id);
+        $this->product_price = $this->product_name->price;
+        $this->product_name = $this->product_name->name;
+
     }
     public function PanelExit(){
         $this->editPanel=NULL;
